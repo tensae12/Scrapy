@@ -7,6 +7,9 @@ class TranscriptsSpider(CrawlSpider):
     name = "transcripts"
     allowed_domains = ["subslikescript.com"]
     start_urls = ["https://subslikescript.com/movies_letter-X"]
+    custom_settings = {
+        'DOWNLOAD_DELAY' : 0.5
+    }
 
     rules = (
         Rule(LinkExtractor(restrict_xpaths=("//ul[@class='scripts-list']/a")), callback="parse_item", follow=True),
@@ -21,5 +24,6 @@ class TranscriptsSpider(CrawlSpider):
             'plot' : article.xpath("./p/text()").get(), 
             'transcript' : article.xpath("./div[@class='full-script']").getall(),
             'url' : response.url,
+            'user-agent' : response.request.headers['User-Agent'],
 
         }
