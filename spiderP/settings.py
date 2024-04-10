@@ -63,7 +63,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   "spiderP.pipelines.MongodbPipeline": 300,
+   "spiderP.pipelines.SQLitePipeline": 300,
   # "spiderP.pipelines.NewAction": 200,
  
    
